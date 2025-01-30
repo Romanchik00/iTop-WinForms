@@ -1,0 +1,16 @@
+C:\Users\Роман\source\repos\WinFormsHomeWork\bin\Debug\net8.0-windows\WinFormsHomeWork.exe
+C:\Users\Роман\source\repos\WinFormsHomeWork\bin\Debug\net8.0-windows\WinFormsHomeWork.deps.json
+C:\Users\Роман\source\repos\WinFormsHomeWork\bin\Debug\net8.0-windows\WinFormsHomeWork.runtimeconfig.json
+C:\Users\Роман\source\repos\WinFormsHomeWork\bin\Debug\net8.0-windows\WinFormsHomeWork.dll
+C:\Users\Роман\source\repos\WinFormsHomeWork\bin\Debug\net8.0-windows\WinFormsHomeWork.pdb
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.Form1.resources
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.csproj.GenerateResource.cache
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.AssemblyInfoInputs.cache
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.AssemblyInfo.cs
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.csproj.CoreCompileInputs.cache
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.dll
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\refint\WinFormsHomeWork.dll
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.pdb
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\WinFormsHomeWork.genruntimeconfig.cache
+C:\Users\Роман\source\repos\WinFormsHomeWork\obj\Debug\net8.0-windows\ref\WinFormsHomeWork.dll
