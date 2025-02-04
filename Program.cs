@@ -13,5 +13,33 @@ namespace WinFormsHomeWork
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
+        public static bool isFresh = false;
+        public static void listRefresh(List<Store_Item> store , ListBox box) 
+        {
+            box.Items.Clear();
+            foreach (Store_Item item in store) 
+            {
+                box.Items.Add(item);            
+            }
+        }
+        public static void listRefresh(List<Store_Item> store, ComboBox box)
+        {
+            box.Items.Clear();
+            foreach (Store_Item item in store)
+            {
+                box.Items.Add(item);
+            }
+        }
+        public static void RefreshSales(this List<Store_Item> totalsales, List<Store_Item> store) 
+        {
+            foreach (Store_Item item in store) 
+            {
+                if (!totalsales.Contains(item))
+                {
+                    totalsales.Add(item);
+                    totalsales.Last().EditAmmo(0);
+                }
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WinFormsHomeWork")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+44ede65b5ef612f28f261b7de759aa756c2a67ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f57164faa65b27a49eafb6fedca93621aa440de")]
 [assembly: System.Reflection.AssemblyProductAttribute("WinFormsHomeWork")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WinFormsHomeWork")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

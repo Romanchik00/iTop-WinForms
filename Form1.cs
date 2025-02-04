@@ -1,103 +1,160 @@
+using System;
+
 namespace WinFormsHomeWork
 {
+    //"Мишка косолапый","Красный Октябрь",600
+    //"Красная шапочка","Красный Октябрь",550
+    //"Белочка","Красный Октябрь",500
+    //"Коровка","Рот Фронт",400
+    //"Птичье молоко","Рот Фронт",700
+
+    //string formattedString = string.Format("{0:F2}", myDouble); // "12.35"
+    //string interpolatedString = $"{myDouble:F2}";
+    //string stringValue = myDouble.ToString("F2");
+
     public partial class Form1 : Form
     {
+        public static List<Store_Item> Store = new List<Store_Item>() 
+        {
+            new Store_Item("Мишка косолапый","Красный Октябрь", 600 , 100),
+            new Store_Item("Красная шапочка", "Красный Октябрь", 550 , 100),
+            new Store_Item("Белочка", "Красный Октябрь", 500 , 100)
+        };
+        public static List<Store_Item> TotalSales = new();
         public Form1()
         {
             InitializeComponent();
+            foreach (Store_Item item in Store)
+            {
+                comboBox1.Items.Add((Candy)item);
+            }
+            Store.ForEach(x => TotalSales.Add(x.Copy()));
+            TotalSales.ForEach(x => x.EditAmmo(0));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public class Candy
         {
-            Form1 form1 = new Form1();
-            foreach (TextBox textBox in groupBox1.Controls)
+            public string Name { get; private set; }
+            public string Manufacturer { get; private set; }
+            public double Price { get; private set; }
+
+            public Candy(string name, string manufacturer, double price)
             {
-                if (textBox.Text == "" || textBox.Text == null)
-                {
-                    MessageBox.Show("Пустая строка");
-                    return;
-                }
+                Name = name;
+                Manufacturer = manufacturer;
+                Price = price;
             }
-            User user = new User(textBox1.Text, textBox2.Text, textBox3.Text, textBox4.Text);
-            listBox1.Items.Add(user);
-            foreach (TextBox textBox in groupBox1.Controls)
+
+            public override string ToString()
             {
-                textBox.Clear();
+                return $"Название:\"{Name}\" Производители:\"{Manufacturer}\" Цена:{Price} руб./кг.";
+            }
+            public string ToShortString() { return $"{Name} {Manufacturer}"; }
+            public static explicit operator Candy(Store_Item item)
+            {
+                return new Candy(item.Name, item.Manufacturer, item.Price) ;
             }
         }
-
-        private void button3_Click(object sender, EventArgs e)
+        private class Check_Candy
         {
-            if (listBox1.SelectedItem != null)
+            public Candy Item { get; private set; }
+            public int Ammount { get; private set; }
+            public Check_Candy(Candy candy, int ammo)
             {
-                listBox1.Items.Remove(listBox1.SelectedItem);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (listBox1.SelectedItem != null)
-            {
-                User user = listBox1.SelectedItem as User;
-
-                if (user != null)
-                {
-                    textBox1.Text = user.name;
-                    textBox2.Text = user.lastname;
-                    textBox3.Text = user.email;
-                    textBox4.Text = user.phone;
-                }
-            }
-            button3_Click(sender, e);
-        }
-
-        private class User
-        {
-            public string name { get; private set; }
-            public string lastname { get; private set; }
-            public string email { get; private set; }
-            public string phone { get; private set; }
-
-            public User(string name, string lastname, string email, string phone)
-            {
-                this.name = name;
-                this.lastname = lastname;
-                this.email = email;
-                this.phone = phone;
-            }
-            public User(string[] strings)
-            {
-                name = strings[0];
-                lastname = strings[1];
-                email = strings[2];
-                phone = strings[3];
+                Item = candy;
+                Ammount = ammo;
             }
             public override string ToString()
             {
-                return name + ' ' + lastname + ' ' + email + ' ' + phone;
+                return $"{Item.ToString()} * {Ammount} - {Item.Price * Ammount}";
+            }
+            public string ToShortString() { return Item.ToShortString(); }
+            public double GetSum() 
+            {
+                return Item.Price * Ammount;
             }
         }
-        private void button4_Click(object sender, EventArgs e)
+
+        private void Add_Click(object sender, EventArgs e)
         {
-            using (StreamWriter sw = new StreamWriter("users.txt"))
+            if (comboBox1.SelectedItem != null && numericUpDown1.Value > 0)
             {
-                foreach (var item in listBox1.Items)
+                checkedListBox1.Items.Add(new Check_Candy((Candy)comboBox1.SelectedItem, (int)numericUpDown1.Value));
+            }
+            numericUpDown1.Value = 0;
+        }
+
+        private void GetCheck_Click(object sender, EventArgs e)
+        {
+            string check = "";
+            double sum = 0;
+            foreach (Check_Candy item in checkedListBox1.CheckedItems)
+            {
+                var s = Store.Find(x => x.Name == item.Item.Name && x.Manufacturer == item.Item.Manufacturer);
+                var ts = TotalSales.Find(x => x.Name == item.Item.Name && x.Manufacturer == item.Item.Manufacturer);
+                if (s is not null && ts is not null)
                 {
-                    sw.WriteLine(item.ToString());
+                    if (s.Ammount - item.Ammount >= 0)
+                    {
+                        ts.AmmoPM(item.Ammount, '+');
+                        s.AmmoPM(item.Ammount, '-');
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error: low items");
+                    }
                 }
-                sw.Flush();
-                sw.Close();
-            }
-        }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            var str = File.ReadAllLines("users.txt");
-            foreach (var item in str)
+            }
+
+            foreach (Check_Candy item in checkedListBox1.CheckedItems) 
             {
-                listBox1.Items.Add(new User(item.Split(' ')) );
+                check += $"{item.ToShortString()}\t\t{item.GetSum()} руб\n";
+                sum += item.GetSum();
+            }
+            check += $"Итог:\t{sum}";
+            MessageBox.Show(check);
+            checkedListBox1.Items.Clear();
+            comboBox1.Items.Clear();
+            label2.Text = "0.00";
+            foreach (Store_Item item in Store)
+            {
+                comboBox1.Items.Add(new Candy(item.Name,item.Manufacturer,item.Price));
             }
         }
 
+        private void Store_Click(object sender, EventArgs e)
+        {
+            FormAutorization Autorization = new FormAutorization();
+            Autorization.ShowDialog(this);
+        }
+
+        private void Finish_Shift_Click(object sender, EventArgs e)
+        {
+            string check = "";
+            double sum = 0;
+
+            foreach (var item in TotalSales)
+            {
+                //check += $"{item.ToShortString()}\t\t{item.GetSum()} руб\n";
+                check += $"{item.Name} {item.Manufacturer} - {item.Ammount} кг.\t {item.Price * item.Ammount} руб\n";
+                sum += item.Price * item.Ammount;
+            }
+            check += $"Итог:\t{sum}";
+            MessageBox.Show(check);
+        }
+
+        private void TotalSum(object sender, EventArgs e)
+        {
+            if(checkedListBox1.SelectedItem != null)
+            {
+                double sum = 0;
+                foreach(Check_Candy item in checkedListBox1.CheckedItems)
+                {
+                    sum += item.GetSum();
+                }
+                label2.Text = sum.ToString("F2");
+            }
+        }
     }
 }

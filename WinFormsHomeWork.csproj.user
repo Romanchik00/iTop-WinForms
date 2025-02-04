@@ -4,5 +4,14 @@
     <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormEditProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormAutorization.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
