@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "PbRTOvIJn8s=",
+  "dgSpecHash": "fld4qni+sxs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Роман\\source\\repos\\WinFormsHomeWork\\WinFormsHomeWork.csproj",
+  "projectFilePath": "C:\\Users\\Роман\\source\\repos\\Romanchik00\\iTop-WinForms\\WinFormsHomeWork.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Роман\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.10\\microsoft.windowsdesktop.app.ref.8.0.10.nupkg.sha512",
+    "C:\\Users\\Роман\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.10\\microsoft.netcore.app.ref.8.0.10.nupkg.sha512",
+    "C:\\Users\\Роман\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.10\\microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512",
     "C:\\Users\\Роман\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\8.0.10\\microsoft.netcore.app.host.win-x64.8.0.10.nupkg.sha512"
   ],
   "logs": []
