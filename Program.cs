@@ -11,7 +11,7 @@ namespace WinFormsHomeWork
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());new int();
+            Application.Run(new Form1());
         }
         public static bool isFresh = false;
         public static void listRefresh(List<Store_Item> store , ListBox box) 
