@@ -19,7 +19,7 @@ namespace WinFormsRomRom
             ItalicToolStripMenuItem.Tag = FontStyle.Italic;
             RegularToolStripMenuItem.Tag = FontStyle.Regular;
             StrikeoutToolStripMenuItem.Tag = FontStyle.Strikeout;
-            UnderlineToolStripMenuItem.Tag = FontStyle.Underline;new int();
+            UnderlineToolStripMenuItem.Tag = FontStyle.Underline;
         }
 
         private void FormWorker_FormClosed(object sender, FormClosedEventArgs e)
