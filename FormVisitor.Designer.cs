@@ -36,6 +36,7 @@
             // 
             richTextBox1.Location = new Point(249, 12);
             richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.Horizontal;
             richTextBox1.Size = new Size(539, 426);
             richTextBox1.TabIndex = 4;
@@ -49,17 +50,19 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(231, 424);
             listBox1.TabIndex = 3;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // FormVisitor
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 567);
+            ClientSize = new Size(800, 449);
             Controls.Add(richTextBox1);
             Controls.Add(listBox1);
             Name = "FormVisitor";
             Text = "My Library ~ ~ ~";
             FormClosed += FormVisitor_FormClosed;
+            Load += FormVisitor_Load;
             ResumeLayout(false);
         }
 
